@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recipe App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Recipe App</h1>
+    <div class="controls">
+      <div class="filters">
+        <button class="filter-btn" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="easy">Easy</button>
+        <button class="filter-btn" data-filter="medium">Medium</button>
+        <button class="filter-btn" data-filter="hard">Hard</button>
+      </div>
+      <div class="sorts">
+        <button class="sort-btn" data-sort="none">No Sort</button>
+        <button class="sort-btn" data-sort="name">Sort: Name</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="recipe-container"></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
