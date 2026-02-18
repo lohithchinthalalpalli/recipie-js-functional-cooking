@@ -1,0 +1,442 @@
+/* ========================================
+   BASE STYLES & LAYOUT
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   HEADER STYLES
+   ======================================== */
+
+.app-header {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.app-header h1 {
+    color: #667eea;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.app-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* ========================================
+   CONTROLS SECTION (Filter & Sort)
+   ======================================== */
+
+.controls-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.filter-group,
+.sort-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.filter-group label,
+.sort-group label {
+    font-weight: 600;
+    color: #667eea;
+    font-size: 0.95rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn,
+.sort-btn {
+    padding: 0.6rem 1.2rem;
+    border: 2px solid #dee2e6;
+    background: white;
+    color: #333;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn:hover,
+.sort-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+    background: #f8f9fa;
+}
+
+.filter-btn.active,
+.sort-btn.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+@media (max-width: 768px) {
+    .controls-section {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* ========================================
+   RECIPE CONTAINER & CARDS
+   ======================================== */
+
+.recipe-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.recipe-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card h3 {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    color: #667eea;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.recipe-meta {
+    padding: 0 1.5rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+}
+
+.recipe-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.difficulty {
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.difficulty.easy {
+    background: #d4edda;
+    color: #155724;
+}
+
+.difficulty.medium {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.difficulty.hard {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.recipe-card p {
+    padding: 0 1.5rem;
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    flex-grow: 1;
+}
+
+/* ========================================
+   CARD ACTIONS (Toggle Buttons)
+   ======================================== */
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.toggle-btn:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.toggle-btn:active {
+    transform: scale(0.98);
+}
+
+/* ========================================
+   INGREDIENTS CONTAINER
+   ======================================== */
+
+.ingredients-container {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-radius: 0 0 12px 12px;
+}
+
+.ingredients-container.visible {
+    display: block;
+}
+
+.ingredients-container h4 {
+    color: #667eea;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.ingredients-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.ingredients-container li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.ingredients-container li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* ========================================
+   STEPS CONTAINER
+   ======================================== */
+
+.steps-container {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    background: #f0f8ff;
+    border-radius: 0 0 12px 12px;
+}
+
+.steps-container.visible {
+    display: block;
+}
+
+.steps-container h4 {
+    color: #667eea;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ========================================
+   STEPS LIST - Main Steps
+   ======================================== */
+
+.steps-list {
+    list-style: none;
+    counter-reset: step-counter;
+    padding: 0;
+}
+
+.steps-list > li {
+    counter-increment: step-counter;
+    padding: 0.6rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.steps-list > li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #667eea;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* ========================================
+   NESTED SUBSTEPS (Level 1+)
+   ======================================== */
+
+.substeps-list {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    border-left: 2px solid #667eea;
+}
+
+.substeps-list li {
+    padding: 0.4rem 0;
+    padding-left: 1rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.substeps-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+}
+
+/* ========================================
+   DEEPER NESTING (Level 2+)
+   ======================================== */
+
+.substeps-list .substeps-list {
+    border-left-color: #9aa5ea;
+    padding-left: 1rem;
+    margin-top: 0.4rem;
+}
+
+.substeps-list .substeps-list li {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.substeps-list .substeps-list li::before {
+    color: #9aa5ea;
+    content: "◦";
+}
+
+/* Even deeper nesting */
+.substeps-list .substeps-list .substeps-list {
+    border-left-color: #bfc5f0;
+    padding-left: 0.8rem;
+}
+
+.substeps-list .substeps-list .substeps-list li {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .recipe-container {
+        grid-template-columns: 1fr;
+    }
+
+    .card-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .app-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .controls-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ingredients-container.visible,
+.steps-container.visible {
+    animation: slideDown 0.3s ease;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    padding: 2rem;
+}
